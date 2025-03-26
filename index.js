@@ -1,25 +1,23 @@
+const jsonServer = require('json-server');
+const path = require('path');
 
-require('dotenv').config()
-const express = require('express')
-const app = express()
-const port = 5000
+// Create the server
+const server = jsonServer.create();
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+// Set the JSON file as the database
+const router = jsonServer.router(path.join(__dirname, 'db.json'));
 
-app.get('/twiter',(req,res) =>{
-  res.send('bhavikvala')
-})
+// Middleware for default settings
+const middlewares = jsonServer.defaults();
 
-app.get('/login',(req, res)=>{
-  res.send('<h1> please login at chai aur code </h1>')
-})
+// Use the middlewares
+server.use(middlewares);
 
-app.get("/youtube",(req, res)=>{
-  res.send('<h2>bhavik vala</h2>')
-})
+// Use the router
+server.use(router);
 
-app.listen(process.env.PORT, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// Start the server
+const PORT = 5000;
+server.listen(PORT, () => {
+  console.log(`JSON Server is running at http://localhost:${PORT}`);
+});
