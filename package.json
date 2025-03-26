@@ -1,0 +1,19 @@
+{
+  "name": "deploy",
+  "version": "1.0.0",
+  "description": "a basic app to",
+  "keywords": [
+    "node"
+  ],
+  "license": "ISC",
+  "author": "bhavik vala",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
